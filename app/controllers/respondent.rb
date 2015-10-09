@@ -1,6 +1,3 @@
-get '/' do
-redirect 'surveys/respondent/:survey_id'
-end
 
 get '/surveys/respondent/:survey_id' do
   @survey = Survey.find_by(id: params[:survey_id])
@@ -14,12 +11,12 @@ post '/surveys/respondent/:survey_id' do
 # use the question to get the choice id
 
   @survey = Survey.find_by(id: params[:survey_id])
-  @completion = Completion.new(user: @user, survey: @survey)
+  @completion = Completion.create(user: @user, survey: @survey)
   @questions = @survey.questions
   @questions.each do |question|
-    choice_id = params[question.id]
+    choice_id = params[question.id.to_s]
     @choice = Choice.find_by(id: choice_id)
-    Selection.new(completion: @completion, choice: @choice)
+    Selection.create(completion: @completion, choice: @choice)
   end
-  erb params.inspect
+  redirect '/'
 end
