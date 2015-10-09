@@ -24,7 +24,6 @@ get '/surveys/:id/show' do
     erb :"surveys/show"
   else
     @user.username
-    # Redirect to some kind of home page
     '/'
   end
 end
