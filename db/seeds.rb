@@ -1,0 +1,7 @@
+u = User.create(username: 'dtisdall', password_hash: 'password', display_name: 'David Tisdall', email: "david.tisdall@thursday5th.com.au")
+s = Survey.create(title: "Amazing Survey", description: "This is the best survey in the world", user: u)
+q1 = Question.create(text: "How cool is this survey", survey: s)
+c1 = Choice.create(text: "Very", question: q1)
+c2 = Choice.create(text: "Not Very", question: q1)
+compl = Completion.create(user: u, survey: s)
+r = Selection.create(completion: compl, choice: c1)
