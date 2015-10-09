@@ -1,6 +1,6 @@
 get '/surveys/new' do
   @survey = Survey.new
-  if logged_in?
+  if @user
     erb :'/survey/new_survey_form'
   else
     redirect '/login'
@@ -16,3 +16,14 @@ post '/surveys' do
     redirect '/surveys/new'
   end
 end
+
+get '/surveys/:id/show' do
+  @survey = Survey.find(params[:id])
+  if @user == @survey.user_id
+    erb :"surveys/show"
+  else
+    # Redirect to some kind of home page
+    '/'
+  end
+end
+
