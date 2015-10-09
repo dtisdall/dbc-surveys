@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :completions
   has_many :surveys
   validates :display_name, :username, :password_hash, :email, presence: true
+  validates :email, :username, uniqueness: true
 
 
   def self.authenticate(params)
