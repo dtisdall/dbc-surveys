@@ -1,0 +1,73 @@
+<!-- Second navbar -->
+<div class="navbar navbar-default" id="navbar-second">
+  <ul class="nav navbar-nav no-border visible-xs-block">
+    <li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
+  </ul>
+
+  <div class="navbar-collapse collapse" id="navbar-second-toggle">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/dashboard"><i class="icon-display4 position-left"></i> Dashboard</a></li>
+    </ul>
+  </div>
+</div>
+<!-- /second navbar -->
+
+<!-- Dashboard header -->
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-display4 position-left"></i> <span class="text-semibold">Home</span> - Dashboard</h4>
+
+      <ul class="breadcrumb breadcrumb-caret position-right">
+        <li>Welcome back <%= @user.display_name.split.first %>!</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+<!-- /dashboard header -->
+
+<!-- Page container -->
+<div class="page-container">
+
+  <!-- Page content -->
+  <div class="page-content">
+
+    <!-- Main content -->
+    <div class="content-wrapper">
+
+
+
+        <!-- Survey Table -->
+        <div class="panel panel-flat">
+          <div class="panel-heading">
+            <h5 class="panel-title">Surveys</h5>
+                  </div>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Completions</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @user.surveys.each do | survey | %>
+                <tr>
+                  <td><%= survey.title %></td>
+                  <td><%= survey.description.truncate(45, omission: '...') %></td>
+                  <td><%= survey.completions.count %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- /survey table --> 
+
+      </div>
+    </div>
+  <%= erb :'partials/_footer' %>
+</div>

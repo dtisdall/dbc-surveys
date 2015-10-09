@@ -4,7 +4,11 @@ end
 
 # Remove me when home page is built
 get'/' do
-  erb :home
+  if @user
+    redirect '/dashboard'
+  else
+    redirect '/login'
+  end
 end
 
 get'/register' do
@@ -24,7 +28,7 @@ post '/login' do
   @user = User.authenticate(params)
   if @user
     set_cookie
-    redirect '/'
+    redirect '/dashboard'
   else
     redirect '/login'
   end
@@ -40,4 +44,7 @@ post '/users' do
   end
 end
 
-
+get'/dashboard' do
+  redirect '/' unless @user
+  erb :dashboard
+end
