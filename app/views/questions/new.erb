@@ -1,7 +1,25 @@
 <form id="new-question-form" method="post" action="/surveys/<%=survey_id%>/questions">
 
   <label for="question[text]">Question</label>
-  <input type="text" name="question[text]" value="<%= @question.text %>">
+  <input type="text" name="question[text]" placeholder="<%= @question.errors.full_messages.first %>">
+
+  <li class="choice"><label for="choice[text1]">Choice 1</label>
+  <input type="text" name="choice[text1]"></li>
+
+  <li class="choice"><label for="choice[text2]">Choice 2</label>
+  <input type="text" name="choice[text2]"></li>
+
+  <li class="choice"><label for="choice[text3]">Choice 3</label>
+  <input type="text" name="choice[text3]"></li>
+
+  <li class="choice"><label for="choice[text4]">Choice 4</label>
+  <input type="text" name="choice[text4]"></li>
+
+  <li class="choice"><label for="choice[text5]">Choice 5</label>
+  <input type="text" name="choice[text5]"></li>
+
+  <li class="choice"><label for="done">Done?</lavel>
+  <input type="checkbox" name="done" value="true"><li>
 
   <input type="submit" value="Create">
 </form>

@@ -11,8 +11,27 @@ post '/surveys/:id/questions' do
   @question = Question.new(params["question"])
   @question.survey_id = params[:id]
   if @question.save
-    redirect "/questions/#{@question.id}/choices/new"
-  else
-    redirect "surveys/#{params[:id]}/questions/new"
+    choices = params["choice"].values.select{|v| v != ""}.map{|v| Choice.new(text: v, question_id: @question.id)}
+    if choices.all?{|choice| choice.save}
+      if params["done"]
+        redirect "surveys/#{Question.find(params[:id]).survey_id}/show"
+      end
+    end
   end
+  erb :'questions/new', locals: {survey_id: params[:id]}
+  # redirect "surveys/#{params[:id]}/questions/new"
 end
+
+
+# post '/questions/:id/choices' do
+#   questions = params["choice"].values.select{|v| v != ""}.map{|v| Choice.new(text: v, question_id: @question.id)}
+#   if questions.all?{|choice| choice.save}
+#     if params["done"]
+#       redirect "surveys/#{Question.find(params[:id]).survey_id}/show"
+#     else
+#       redirect "/surveys/#{Question.find(params[:id]).survey_id}/questions/new"
+#     end
+#   else
+#     redirect '/'
+#   end
+# end
