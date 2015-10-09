@@ -1,6 +1,6 @@
 get '/surveys/:id/questions/new' do
   @question = Question.new
-  if logged_in?
+  if @user
     erb :"/questions/new", locals: {survey_id: params[:id]}
   else
     redirect '/login'
