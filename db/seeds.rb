@@ -1,4 +1,4 @@
-u = User.create(username: 'dtisdall', password_hash: 'password', display_name: 'David Tisdall', email: "david.tisdall@thursday5th.com.au")
+u = User.create(username: 'dtisdall', password: 'password', display_name: 'David Tisdall', email: "david.tisdall@thursday5th.com.au")
 s = Survey.create(title: "Amazing Survey", description: "This is the best survey in the world", user: u)
 q1 = Question.create(text: "How cool is this survey", survey: s)
 c1 = Choice.create(text: "Very", question: q1)
