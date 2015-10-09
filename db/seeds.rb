@@ -11,7 +11,7 @@ r = Selection.create(completion: compl, choice: c1)
 
 #Second time through
 
-s = Survey.create(title: Faker::Lorem.words(2), description: Faker::Lorem.words(7), user: User.find(1))
+s = Survey.create(title: Faker::Lorem.sentence(2), description: Faker::Lorem.sentence(7), user: User.find(1))
 q1 = Question.create(text: "How cool is this survey", survey: s)
 q1c1 = Choice.create(text: "Very", question: q1)
 q1c2 = Choice.create(text: "Not Very", question: q1)
