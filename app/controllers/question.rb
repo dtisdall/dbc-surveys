@@ -23,15 +23,3 @@ post '/surveys/:id/questions' do
 end
 
 
-# post '/questions/:id/choices' do
-#   questions = params["choice"].values.select{|v| v != ""}.map{|v| Choice.new(text: v, question_id: @question.id)}
-#   if questions.all?{|choice| choice.save}
-#     if params["done"]
-#       redirect "surveys/#{Question.find(params[:id]).survey_id}/show"
-#     else
-#       redirect "/surveys/#{Question.find(params[:id]).survey_id}/questions/new"
-#     end
-#   else
-#     redirect '/'
-#   end
-# end
