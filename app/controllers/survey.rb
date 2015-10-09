@@ -10,6 +10,7 @@ end
 post '/surveys' do
   @survey = Survey.new(params["survey"])
   @survey.user_id = session[:user_id]
+  @survey.url = SecureRandom.hex(4)
   if @survey.save
     redirect "surveys/#{@survey.id}/questions/new"
   else
