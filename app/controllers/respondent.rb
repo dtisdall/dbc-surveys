@@ -9,5 +9,5 @@ get '/surveys/respondent/:survey_id' do
 end
 
 post '/surveys/respondent/:survey_id' do
-  @completion = Completion.new(user: ,survey_id: params[:survey_id])
+  erb params.inspect
 end
