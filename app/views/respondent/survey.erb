@@ -4,9 +4,10 @@
 <main class="form-wrapper" role="main">
 
   <form method="post" action="/surveys/respondent/<%= @survey.id %>">
-
-    <% Question.all.each do |question|  %>
-        <%= question.id%>. <%= question.text  %>
+<% item = 1 %>
+    <% @questions.each do |question|  %>
+        <%= item %>. <%= question.text  %>
+        <% item +=1 %>
         <% question.choices.each do |choice| %>
         <ul>
             <input type="radio" name=" question_id[<%= question.id %>]" value="<%= choice.id %>" ><%= choice.text %>
