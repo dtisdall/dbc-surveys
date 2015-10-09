@@ -1,7 +1,7 @@
 get '/surveys/new' do
   @survey = Survey.new
   if @user
-    erb :'/survey/new_survey_form'
+    erb :'/surveys/new'
   else
     redirect '/login'
   end
@@ -19,9 +19,10 @@ end
 
 get '/surveys/:id/show' do
   @survey = Survey.find(params[:id])
-  if @user == @survey.user_id
+  if @user.id == @survey.user_id
     erb :"surveys/show"
   else
+    @user.username
     # Redirect to some kind of home page
     '/'
   end

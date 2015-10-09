@@ -1,7 +1,7 @@
 get '/surveys/:id/questions/new' do
   @question = Question.new
   if @user
-    erb :"/questions/new", locals: {survey_id: params[:id]}
+    erb :"questions/new", locals: {survey_id: params[:id]}
   else
     redirect '/login'
   end
@@ -9,6 +9,7 @@ end
 
 post '/surveys/:id/questions' do
   @question = Question.new(params["question"])
+  @question.survey_id = params[:id]
   if @question.save
     redirect "/questions/#{@question.id}/choices/new"
   else
