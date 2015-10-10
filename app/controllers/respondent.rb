@@ -1,7 +1,8 @@
 # This route to be deprecated 
 get '/completions/:survey_id' do
   @survey = Survey.find_by(id: params[:survey_id])
-  redirect "/take/#{@survey.key}"
+  # redirect "/take/#{@survey.key}"
+  erb :'respondent/surveywiz'
 end
 
 #This route to be used instead
@@ -22,3 +23,5 @@ post '/completions/:survey_id' do
   end
   redirect '/'
 end
+
+
