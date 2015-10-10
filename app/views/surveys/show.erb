@@ -1,13 +1,13 @@
 <h1>Survey: <%=@survey.title%></h1>
 <h2>Description: <%=@survey.description%></h2>
-Your unique url is: localhost/:9393/<%=@survey.url%>
+Your unique url is: localhost/:9393/<%=@survey.key%>
 
 <p>
 <% @survey.questions.each do |question| %>
   <%= question.text %>
   <ul>
   <% question.choices.each do |choice| %>
-    <li><%=choice.text%><%=choice.selections / choice.question.choice.selections.size %></li>
+    <li><%=choice.text%></li>
   <% end %>
   </ul>
 <% end %>

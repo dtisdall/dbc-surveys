@@ -2,7 +2,7 @@
 
 u = User.create(username: 'dtisdall', password: 'password', display_name: 'David Tisdall', email: "david.tisdall@thursday5th.com.au")
 u = User.find(1)
-s = Survey.create(title: "Amazing Survey", description: "This is the best survey in the world", user: User.find(1), url:"ASDF")
+s = Survey.create(title: "Amazing Survey", description: "This is the best survey in the world", user: User.find(1))
 q1 = Question.create(text: "How cool is this survey", survey: s)
 c1 = Choice.create(text: "Very", question: q1)
 c2 = Choice.create(text: "Not Very", question: q1)
@@ -26,7 +26,8 @@ q3c3 = Choice.create(text: "Totally", question: q3)
 
 12.times do
 name = Faker::Name.name
-u = User.create(username: name.split.first, password: Faker::Internet.password(8), display_name: name, email: Faker::Internet.safe_email(name.split.first))
+u = User.new(username: name.split.first, password: Faker::Internet.password(8), display_name: name, email: Faker::Internet.safe_email(name.split.first))
+u.save
 compl = Completion.create(user: u, survey: s)
 r = Selection.create(completion: compl, choice: s.questions[0].choices.sample)
 r = Selection.create(completion: compl, choice: s.questions[1].choices.sample)

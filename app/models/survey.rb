@@ -3,4 +3,8 @@ class Survey < ActiveRecord::Base
   has_many :completions
   has_many :questions
   has_many :respondents, through: :completions, class_name: 'User'
+
+  before_save do
+    self.key = SecureRandom.hex(12)
+  end
 end
