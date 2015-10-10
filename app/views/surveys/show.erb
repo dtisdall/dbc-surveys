@@ -1,6 +1,6 @@
 <h1>Survey: <%=@survey.title%></h1>
 <h2>Description: <%=@survey.description%></h2>
-Your unique url is: localhost/:9393/<%=@survey.key%>
+Your unique url is: <a href="http://localhost:9393/take/<%=@survey.key%>">localhost/:9393/take/<%=@survey.key%></a>
 
 <p>
 <% @survey.questions.each do |question| %>
