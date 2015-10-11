@@ -18,7 +18,7 @@ end
 get '/surveys/:id/show' do
   redirect '/' unless @user
   @survey = Survey.find(params[:id])
-  redirect '/' unless @user == @survey.user_id
+  redirect '/' unless @user.id == @survey.user_id
   erb :"surveys/show"
 end
 
