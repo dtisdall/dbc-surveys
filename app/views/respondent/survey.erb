@@ -4,8 +4,21 @@
 <main class="form-wrapper" role="main">
 
   <form method="post" action="/surveys/respondent/<%= @survey.id %>">
-<% item = 1 %>
-    <% @questions.each do |question|  %>
+
+    <% question1 = @questions.first %>
+    <div class="question1" id="<%= question1.id%>" style="display: on" >
+        1. <%= question1.text  %>
+        <% question1.choices.each do |choice| %>
+        <ul>
+            <input type="radio" name="<%= question1.id %>" value="<%= choice.id %>" ><%= choice.text %>
+        </ul>
+        <% end %>
+        <input type= "submit" value="Next" class "button">
+    </div>
+
+<% item = 2 %>
+    <% @questions[1..-1].each do |question|  %>
+    <div class="question<%= item %>" id="<%= question.id%>" style="display: on" >
         <%= item %>. <%= question.text  %>
         <% item +=1 %>
         <% question.choices.each do |choice| %>
@@ -13,9 +26,12 @@
             <input type="radio" name="<%= question.id %>" value="<%= choice.id %>" ><%= choice.text %>
         </ul>
         <% end %>
+        <input type= "submit" value="Next" class "button">
+    </div>
     <% end %>
     <input type= "submit" value="Submit Responses" class "button">
 
   </form>
 </main>
+
 
