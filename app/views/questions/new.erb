@@ -1,22 +1,88 @@
+<!-- Second navbar -->
+<div class="navbar navbar-default" id="navbar-second">
+  <ul class="nav navbar-nav no-border visible-xs-block">
+    <li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
+  </ul>
+
+  <div class="navbar-collapse collapse" id="navbar-second-toggle">
+    <ul class="nav navbar-nav">
+      <li><a href="/dashboard"><i class="icon-display4 position-left"></i> Dashboard</a></li>
+      <li class="active"><a href="/surveys/new"><i class="icon-stack-plus position-left"></i> New Survey</a></li>
+    </ul>
+  </div>
+</div>
+<!-- /second navbar -->
+
+<!-- New Survey header -->
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-stack-plus position-left"></i> <span class="text-semibold">Survey</span> - Add Questions</h4>
+
+      <ul class="breadcrumb breadcrumb-caret position-right">
+        <li>Add questions to a new survey</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+<!-- /New Survey header -->
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+      <!-- Page content -->
+      <div class="page-content">
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+
 <form id="new-question-form" method="post" action="/surveys/<%=survey_id%>/questions">
+<div class="panel panel-flat">
+  <div class="panel-heading">
+    <h5 class="panel-title">New question</h5></div>
+    <div class="panel-body">
 
+  <div class="form-group">
   <label for="question[text]">Question</label>
-  <input type="text" name="question[text]" placeholder="<%= @question.errors.full_messages.first %>">
+  <input class="form-control" type="text" name="question[text]" placeholder="<%= @question.errors.full_messages.first %>">
+  </div>
   <div id="choices">
-    <li class="choice"><label for="choice[1]">Choice</label>
-    <input type="text" name="choice[1]"></li>
+    <label>Choices</label>
 
-    <li class="choice"><label for="choice[2]">Choice</label>
-    <input type="text" name="choice[2]"></li>
+    <div class="form-group">
+    <input class="form-control survey-choice" type="text" name="choice[1]">
+    </div>
+    <div class="form-group">
+    <input class="form-control survey-choice" type="text" name="choice[2]">
+    </div>
   </div>
 
-  <button class="add_field_button">Add More Choices</button>
 
-  <label for="done">Done?</label>
-  <input type="checkbox" name="done" value="true">
 
-  <input type="submit" value="Create">
+
+  <div class="text-right">
+  <button class="btn btn-success add_field_button">Add Choice <i class="icon-plus3 position-right"></i></button>
+    <button type="submit" class="btn btn-primary">Add Question <i class="icon-arrow-right14 position-right"></i></button>
+    <button type="submit" name="done" value="true" class="btn btn-warning">Finish <i class="icon-task position-right"></i></button>
+
+  </div>
+
 </form>
+
+
+<form id="new-question-form" method="post" action="/surveys/<%=survey_id%>/questions">
+  
+
+
+
+
+      </div>
+    </div>
+  <%= erb :'partials/_footer' %>
+</div>
 
 
 
