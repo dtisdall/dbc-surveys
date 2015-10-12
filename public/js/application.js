@@ -5,9 +5,9 @@ $(document).ready(function() {
 
   $(add_button).click(function(e){ //on add input button click
       e.preventDefault();
-      var amt = $(".choice").length + 1;
+      var amt = $(".survey-choice").length + 1;
       // debugger;
-      $(wrapper).append('<li class="choice more"><label for="choice[{amt}]">Choice</label><input type="text" name="choice[{amt}]"><a href="#" class="remove_field">Remove</a></li>'.supplant({ amt: amt}));
+      $(wrapper).append('<div class="form-group survey-choice"><input class="form-control" type="text" name="choice[{amt}]"></div>'.supplant({ amt: amt}));
       });
 
 

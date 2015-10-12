@@ -1,13 +1,74 @@
-<h1>Survey: <%=@survey.title%></h1>
-<h2>Description: <%=@survey.description%></h2>
-Your unique url is: <a href="http://localhost:9393/take/<%=@survey.key%>">localhost:9393/take/<%=@survey.key%></a>
-
-<p>
-<% @survey.questions.each do |question| %>
-  <%= question.text %>
-  <ul>
-  <% question.choices.each do |choice| %>
-    <li><%=choice.text%></li>
-  <% end %>
+<!-- Second navbar -->
+<div class="navbar navbar-default" id="navbar-second">
+  <ul class="nav navbar-nav no-border visible-xs-block">
+    <li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
   </ul>
-<% end %>
+
+  <div class="navbar-collapse collapse" id="navbar-second-toggle">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/dashboard"><i class="icon-display4 position-left"></i> Dashboard</a></li>
+      <li><a href="/surveys/new"><i class="icon-stack-plus position-left"></i> New Survey</a></li>
+    </ul>
+  </div>
+</div>
+<!-- /second navbar -->
+
+<!-- Dashboard header -->
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-stack position-left"></i> <span class="text-semibold">Dashboard</span> - View Survey</h4>
+
+      <ul class="breadcrumb breadcrumb-caret position-right">
+        <li>Survey: <%= @survey.title %></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+<!-- /dashboard header -->
+
+<!-- Page container -->
+<div class="page-container">
+
+  <!-- Page content -->
+  <div class="page-content">
+
+    <!-- Main content -->
+    <div class="content-wrapper">
+
+
+
+
+
+<div class="panel panel-flat">
+          <div class="panel-heading">
+            <h5 class="panel-title"><%=@survey.title%></h5>
+          </div>
+
+          <div class="panel-body">
+            <h6 class="text-semibold">Description</h6>
+            <p class="content-group"><%=@survey.description%></p>
+
+            <h6 class="text-semibold">Unique URL</h6>
+            <p class="content-group"><a href="http://localhost:9393/take/<%=@survey.key%>">localhost:9393/take/<%=@survey.key%></a></p>
+
+            <% @survey.questions.each do |question| %>
+            <h6 class="text-semibold">Question:  <%= question.text %></h6>
+            <p>Choices:
+              <ul>
+                <% question.choices.each do |choice| %>
+                  <li><%=choice.text%></li>
+                <% end %>
+              </ul>
+              </p>
+            <% end %>
+
+
+          </div>
+        </div>
+
+              </div>
+    </div>
+  <%= erb :'partials/_footer' %>
+</div>
