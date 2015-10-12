@@ -1,41 +1,38 @@
-
-
+var question = 2;
+var next_question = question + 1;
+var question = document.getElementsByClassName("question")[0];
 $( document ).ready(function() {
-  debugger;
     console.log( "ready!" );
+    $('.question_button').on("click", function(event){
+      event.preventDefault();
+        console.log("Great, you prevented it!! ^_^");
+        // document.getElementById().style.display = "none";
+        // document.getElementsByClassName('question').style.display = "on";
+        // question ++ ;
+        // next_question ++;
+        // $document.showNextQuestion()
+         // document.getElementById(2).style.display = "on";
+         // document.getElementById(3).style.display = "none";
+
+        // $.ajax({
+        //         type: "POST",
+        //         url:"survey/respondent/"+ question.id ,
+        //         data: $(this).serialize()
+        //       }).done(function(data){
+        //      console.log(data);
+        //     $('#data').html(data);
+        //     })
+          })
 });
 
+function showNextQuestion(current) {
 
-// $(document).ready(function() {
-//   // This is called after the document has loaded in its entirety
-//   // This guarantees that any elements we bind to will exist on the page
-//   // when we try to bind to them
+  alert(current);
+  var element = document.getElementByID(current);
+  alert(element);
+  // alert("#"+current)
+  // var next_question = current +1;
+  // document.getElementById(current).style.display = "none";
+  // document.getElementById(next_question).style.display = "on";;
+}
 
-//   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-
-//   // <% item = 1 %>
-//   // $(button).on("click", function(event){
-//   //    event.preventDefault();
-//   //    console.log("Great, you prevented it!! ^_^");
-
-//   $('.question_button').on("click", function(event){
-//     debugger;
-//     event.preventDefault();
-//     console.log("Great, you prevented it!! ^_^");
-//   })
-// });
-
-// // $('#').on('click', function(){
-// //     alert('naex has been clicked!');
-// // });
-
-// // function showNextQuestion(el) {
-// //     alert (el.className);
-// // }
-//   // $("onClick").on("click", function(event){
-//   //   event.preventDefault();
-//   //   function showNextQuestion(current,next){
-//   // debugger;
-//   // document.getElementById(current).style.display = "none";
-//   // document.getElementById(next).style.display = "on";
-// }

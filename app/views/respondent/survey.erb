@@ -4,24 +4,9 @@
 <main class="form-wrapper" role="main">
 
   <form method="post" action="/surveys/respondent/<%= @survey.id %>">
-
-    <% question = @questions.first %>
     <% item = 1 %>
+    <% question = @questions.first %>
     <div class="question" id="<%= question.id%>" style="display: on" >
-        <%=item %>. <%= question.text  %>
-        <% question.choices.each do |choice| %>
-        <ul>
-            <input type="radio" name="<%= question.id %>" value="<%= choice.id %>" ><%= choice.text %>
-        </ul>
-        <% end %>
-        <!-- <input type= "submit" value="Next" class="button"> -->
-        <button onclick="showNextQuestion(this)" class="question_button" id="<%= item %>">Next</button>
-
-    </div>
-
-<% item = 2 %>
-    <% @questions[1..-1].each do |question|  %>
-    <div class="question<%= item %>" id="<%= question.id%>" style="display: none" >
         <%= item %>. <%= question.text  %>
         <% item +=1 %>
         <% question.choices.each do |choice| %>
@@ -29,7 +14,23 @@
             <input type="radio" name="<%= question.id %>" value="<%= choice.id %>" ><%= choice.text %>
         </ul>
         <% end %>
-        <input type= "submit" value="Next" class "button">
+
+        <button onclick="showNextQuestion(question)" class="question_button" id="<%= item %>">Next</button>
+    </div>
+
+
+    <% @questions[1..-1].each do |question|  %>
+    <div class="question" id="<%= question.id%>" style="display: none" >
+        <%= item %>. <%= question.text  %>
+        <% item +=1 %>
+        <% question.choices.each do |choice| %>
+        <ul>
+            <input type="radio" name="<%= question.id %>" value="<%= choice.id %>" ><%= choice.text %>
+        </ul>
+        <% end %>
+
+        <button onclick="showNextQuestion(question)" class="question_button" id="<%= item %>">Next</button>
+
     </div>
     <% end %>
     <input type= "submit" value="Submit Responses" class="button">
