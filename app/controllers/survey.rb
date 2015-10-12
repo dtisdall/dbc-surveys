@@ -36,8 +36,6 @@ post '/surveys/:id/questions' do
   redirect '/' unless @user
   @question = Question.new(params["question"])
   if @question.save
-    require 'pry'
-    binding.pry
     choices = params["choice"].values.select{|v| v != ""}.map{|v| Choice.new(text: v, question_id: @question.id)}
     if choices.all?{|choice| choice.save}
       if request.xhr?

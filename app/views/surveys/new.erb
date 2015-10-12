@@ -1,12 +1,12 @@
 <div id = "new-survey-creator">
   <form id="new-survey-form" method="post" action="/surveys">
-  <label for="survey[title]">Title</label>
-  <input type="text" name="survey[title]" value="<%= @survey.title %>"
+    <label for="survey[title]">Title</label>
+    <input id="survey-title" type="text" name="survey[title]" value="<%= @survey.title %>"
 
-  <label for="survey[description]">Description</label>
-  <input type="text" name="survey[description]" value="<%=@survey.description%>">
+    <label for="survey[description]">Description</label>
+    <input type="text" name="survey[description]" value="<%=@survey.description%>">
 
-  <input id = "survey-submission" type="submit" value="Create">
-</form>
+    <input id = "survey-submission" type="submit" value="Create">
+  </form>
 
 </div>

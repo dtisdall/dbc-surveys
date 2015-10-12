@@ -2,7 +2,8 @@
   <form id="new-question-form" method="post" action="/surveys/<%=survey_id%>/questions">
 
     <label for="question[text]">Question</label>
-    <input type="text" name="question[text]" placeholder="<%= question.errors.full_messages.first %>">
+    <input type="text" name="question[text]">
+    <input id="survey_id" type="hidden" name="question[survey_id]" value="<%=survey_id%>">
 
     <div id="choice-list">
       <li class="choice"><label for="choice[text1]">Choice 1</label><input type="text" name="choice[text1]"></li>
@@ -14,8 +15,6 @@
       <input id="add-choice" type="submit" value="Add More Choices">
     </form>
 
-    <input id="survey_id" type="hidden" name="question[survey_id]" value="<%=survey_id%>">
-    <input id= "question-submission" type="submit" value="Create">
+    <input id= "question-submission" type="submit" value="Add another question">
   </form>
-
 </div>

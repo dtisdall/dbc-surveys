@@ -6,8 +6,10 @@ $(document).ready(function() {
       url: $( "#new-survey-form" ).attr("action"),
       data: $( "#new-survey-form" ).serialize()
     }).done(function(response) {
-      $("#survey-submission").remove();
+      // $("#survey-submission").remove();
+      $("#new-survey-form").html("<h1>" + $("#survey-title").val() + "</h1>")
       $('#new-survey-creator').append(response);
+      $("#new-survey-creator").append("<div id = \"finish-creation\"><form id=\"survey-creation-completion\" method=\"get\" action=\"/surveys/" + $("#survey_id").val() + "/show\"><input id = \"done-button\"type=\"submit\" value=\"Done!\"></form></div>");
     });
   });
 
@@ -25,7 +27,20 @@ $(document).ready(function() {
       url: url,
       data:$("#new-question-form").serialize()
     }).done(function(response) {
-      debugger
+      var newform = $(response).find("#new-question-creator");
+      $("#new-question-creator").replaceWith(newform);
     });
-  })
+  });
+
+  $("#new-survey-creator").on("click", "#done-button", function(){
+    event.preventDefault();
+    var url = "/surveys/" + $("#survey_id").val() + "/questions"
+    $.ajax({
+      type: "POST",
+      url: url,
+      data:$("#new-question-form").serialize()
+    }).done(function(){
+      $("#survey-creation-completion").submit();
+    });
+  });
 });
