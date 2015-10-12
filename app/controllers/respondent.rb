@@ -21,7 +21,9 @@ post '/completions/:survey_id' do
     @choice = Choice.find_by(id: choice_id)
     Selection.create(completion: @completion, choice: @choice)
   end
-  redirect '/'
+  redirect '/success'
 end
 
-
+get '/success' do
+  erb :success
+end

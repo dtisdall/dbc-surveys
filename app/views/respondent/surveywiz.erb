@@ -1,55 +1,57 @@
 
-  <!-- Page container -->
-  <div class="page-container">
+<!-- Page container -->
+<div class="page-container">
 
-    <!-- Page content -->
-    <div class="page-content">
+  <!-- Page content -->
+  <div class="page-content">
 
-      <!-- Main content -->
-      <div class="content-wrapper">
+    <!-- Main content -->
+    <div class="content-wrapper">
 
-        <!-- Basic setup -->
-        <div class="panel panel-white">
-          <div class="panel-heading">
-            <h6 class="panel-title"><%= @survey.title %></h6>
-          </div>
 
-            <form class="" action="#">
-            <% @survey.questions.each do |question|%>      
-            <fieldset>
-              <h6 class="text-semibold">
-                <span>1</span>
+          <!-- Basic layout-->
+          <form action="/completions/<%= @survey.id %>" class="form-basic" method="post">
+            <div class="panel panel-white">
+              <div class="panel-heading">
+                <h5 class="panel-title"><%= @survey.title %></h5>
+              </div>
+
+
+              <% @survey.questions.each_with_index do | question, index | %>
+              <fieldset class="step" id="<%= "step#{index+1}" %>">
+              <h6 class="form-wizard-title text-semibold">
+                <span class="form-wizard-count"><%= index+1 %></span>
                 <%= question.text %>
-                <small class="display-block">Tell us a bit about yourself</small>
+                <small class="display-block">Please select one response</small>
               </h6>
+              <div class="form-group">
+              <% question.choices.each do | choice | %>
 
-
-              <div class="form-group pt-15">
-                <label class="display-block text-semibold">Choices:</label>
-                <% question.choices.each do |choice|%>
                   <div class="radio">
                     <label>
-                      <div class="choice"><span class="checked"><input type="radio" name="<%= choice.id %>" class="styled"></span></div>
+                      <input type="radio" name="<%= question.id %>" value="<%= choice.id %>">
                       <%= choice.text %>
                     </label>
                   </div>
+
+                  <% end %>
+
+                </div>
+                </fieldset>
                 <% end %>
-              </div>
-            </fieldset>
-            <% end %>
 
 
-            <div class="form-wizard-actions">
-              <input class="btn btn-default" id="basic-back" value="Back" type="reset">
-              <input class="btn btn-info" id="basic-next" value="Next" type="submit">
+                <div class="form-wizard-actions">
+                  <input class="btn btn-default" id="basic-back" value="Back" type="reset">
+                  <input class="btn btn-info" id="basic-next" value="Next" type="submit">
+                </div>
+
             </div>
           </form>
-          </div>
-              <!-- /basic setup -->
+          <!-- /basic layout -->
+
 
       </div>
-      <!-- /main content -->
-
     </div>
-    <!-- /page content -->
-
+  <%= erb :'partials/_footer' %>
+</div>
