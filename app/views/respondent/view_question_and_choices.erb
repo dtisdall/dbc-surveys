@@ -1,0 +1,21 @@
+<div id="question-and-choices-container">
+
+   <form id=question method="post" action="/surveys/respondent/<%= @survey.id %>">
+ <% item = 1 %>
+     <% @questions[2..-1].each do |question|  %>
+
+     <div class="question<%= item %>" id="<%= question.id%>" style=visibility >
+         <%= item %>. <%= question.text  %>
+         <% item +=1 %>
+         <% question.choices.each do |choice| %>
+         <ul>
+             <input type="radio" name="<%= question.id %>" value="<%= choice.id %>" ><%= choice.text %>
+         </ul>
+         <% end %>
+         <input type= "submit" value="Next" class="button">
+     </div>
+     <% end %>
+
+</div>
+
+<!-- create an onclick function that takes the current div and the the next div and sets the variable accordingly -->

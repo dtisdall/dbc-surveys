@@ -5,20 +5,23 @@
 
   <form method="post" action="/surveys/respondent/<%= @survey.id %>">
 
-    <% question1 = @questions.first %>
-    <div class="question1" id="<%= question1.id%>" style="display: on" >
-        1. <%= question1.text  %>
-        <% question1.choices.each do |choice| %>
+    <% question = @questions.first %>
+    <% item = 1 %>
+    <div class="question" id="<%= question.id%>" style="display: on" >
+        <%=item %>. <%= question.text  %>
+        <% question.choices.each do |choice| %>
         <ul>
-            <input type="radio" name="<%= question1.id %>" value="<%= choice.id %>" ><%= choice.text %>
+            <input type="radio" name="<%= question.id %>" value="<%= choice.id %>" ><%= choice.text %>
         </ul>
         <% end %>
-        <input type= "submit" value="Next" class "button">
+        <!-- <input type= "submit" value="Next" class="button"> -->
+        <button onclick="showNextQuestion(this)" class="question_button" id="<%= item %>">Next</button>
+
     </div>
 
 <% item = 2 %>
     <% @questions[1..-1].each do |question|  %>
-    <div class="question<%= item %>" id="<%= question.id%>" style="display: on" >
+    <div class="question<%= item %>" id="<%= question.id%>" style="display: none" >
         <%= item %>. <%= question.text  %>
         <% item +=1 %>
         <% question.choices.each do |choice| %>
@@ -29,7 +32,7 @@
         <input type= "submit" value="Next" class "button">
     </div>
     <% end %>
-    <input type= "submit" value="Submit Responses" class "button">
+    <input type= "submit" value="Submit Responses" class="button">
 
   </form>
 </main>
